@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/registrar_reclamo', [ReclamoController::class, 'store'])->name('reclamo.store');
 Route::post('/uploadPhoto', [FotoController::class, 'store'])->name('foto.store');
+Route::post('/uploadAvatar', [FotoController::class, 'avatarStore'])->name('avatar.store');
 Route::get('/ejemplo', [ReclamoController::class, 'ejemplo'])->name('reclamo.ejemplo');
 Route::post('/user_register', [RegisterController::class, 'register'])->name('user.register');
 

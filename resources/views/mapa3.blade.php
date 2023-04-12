@@ -91,5 +91,5 @@
   }
 </script>
 <!-- Carga la API de Google Maps con tu clave de API -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFd1Z-5KYgRDkK1cCOVYtMhHVkqH_I-8s&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap"></script>
 @endsection

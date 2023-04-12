@@ -39,27 +39,81 @@ class FotoController extends Controller
         // dd($request->all());
 
         try {
+            // $fotos = new Collection();
+
+            if ($request->has('images')) {
+                
+                $images = $request->images;
+                // return response()->json([
+                //     'reclamo_id' => $request->reclamo_id,
+                //     'cantidad' => count($image),
+                //     'message' => 'Image upload successfully',
+                //     'status' => true
+                // ], 200);
+                foreach ($images as $key => $value) {
+                    $name = time() . $key . '.' . $value->getClientOriginalExtension();
+                    $path = public_path('upload');
+                    // $objet = [
+                    //     "name" => $name,
+                    //     "path" => $path
+                    // ];
+                    $value->move($path, $name);
+                    // $fotos->push($objet);
+                }
+                return response()->json([
+                    'reclamo_id' => $request->reclamo_id,
+                    // 'fotos' => $fotos,
+                    'message' => 'Image upload successfully',
+                    'status' => true
+                ], 200);
+            } else {
+                return response()->json([
+                    'message' => 'Image upload cancel',
+                    'status' => false
+                ], 500);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Image upload cancel',
+                'status' => false
+            ], 500);
+        }
+    }
+
+    public function avatarStore(Request $request)
+    {
+        try {
+            // return response()->json([
+            //     'reclamo_id' => $request->reclamo_id,
+            //     // 'fotos' => $fotos,
+            //     'message' => 'Image upload successfully',
+            //     'status' => true
+            // ], 200);
             $fotos = new Collection();
 
             if ($request->has('image')) {
                 $image = $request->image;
-                foreach ($image as $key => $value) {
-                    $name = time() . $key . '.' . $value->getClientOriginalExtension();
-                    $path = public_path('upload');
-                    $objet = [
-                        "name" => $name,
-                        "path" => $path
-                    ];
-                    $value->move($path, $name);
-                    $fotos->push($objet);
-                }
+
+                $name = time() . '.' . $image->getClientOriginalExtension();
+                $path = public_path('avatar');
+                // $objet = [
+                //     "name" => $name,
+                //     "path" => $path
+                // ];
+                $image->move($path, $name);
+                // $fotos->push($objet);
+                return response()->json([
+                    'reclamo_id' => $request->reclamo_id,
+                    // 'fotos' => $fotos,
+                    'message' => 'Image upload successfully',
+                    'status' => true
+                ], 200);
+            } else {
+                return response()->json([
+                    'message' => 'Image upload cancel',
+                    'status' => false
+                ], 500);
             }
-            return response()->json([
-                'reclamo_id' => $request->reclamo_id,
-                'fotos' => $fotos,
-                'message' => 'Image upload successfully',
-                'status' => true
-            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Image upload cancel',
