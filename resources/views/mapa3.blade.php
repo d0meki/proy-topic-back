@@ -73,7 +73,7 @@
       var marker = new google.maps.Marker({
         position: event.latLng,
         map: map,
-        icon: '../public/assets/marcadores/boliviamark.png',
+        icon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
         // icon: image,
         size: new google.maps.Size(20, 32),
         // El origen para esta imagen es (0, 0).
