@@ -451,13 +451,39 @@
                         arrayDeReclamos.forEach(function(reclamo) {
                             var reclamoLatLng = new google.maps.LatLng(reclamo.posicion[0], reclamo.posicion[1]);
 
-                            var marker = new google.maps.Marker({
+
+                            if (reclamo.categoria == 'Caminos') {
+                                var marker = new google.maps.Marker({
                                 position: reclamoLatLng,
                                 map: map,
+                                title:'Caminos',
+                                icon: {
+                                    url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png"
+                                }
+
+                            });
+                            }
+                            if (reclamo.categoria == 'Basura') {
+                                var marker = new google.maps.Marker({
+                                position: reclamoLatLng,
+                                map: map,
+                                title:'Basura',
                                 icon: {
                                     url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
                                 }
                             });
+                            }
+                            if (reclamo.categoria == 'Alumbrado') {
+                                var marker = new google.maps.Marker({
+                                position: reclamoLatLng,
+                                map: map,
+                                title:'Alumbrado',
+                                icon: {
+                                    url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"
+                                }
+                            });
+                            }
+
 
                             // Agregamos el marcador al arreglo de marcadores
                             markers.push(marker);
