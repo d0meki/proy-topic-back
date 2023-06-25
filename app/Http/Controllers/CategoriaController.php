@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reclamo;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class ReclamoController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,6 +16,10 @@ class ReclamoController extends Controller
         //
     }
 
+    public function getCategoria()
+    {
+         return view('GestionarCategoria');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -34,43 +36,9 @@ class ReclamoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-     
     public function store(Request $request)
     {
-        try {
-            $reclamo = Reclamo::create([
-                'fecha' => Carbon::now(),
-                'descripcion' => $request->descripcion,
-                'categoria' => $request->categoria,
-                'latitud' => $request->latitud,
-                'longitud' => $request->longitud,
-                'user_id' => $request->user_id,
-            ]);
-            return response()->json([
-                'reclamo_id' =>$reclamo->id,
-                'message' => 'Register successfully',
-                'status' => true
-            ], 200);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'reclamo_id' => -1,
-                'message' => $th->getMessage(),
-                'status' => false
-            ], 500);
-        }
-    }
-    public function ejemplo()
-    {
-        return response()->json([
-            'msg' => 'Api Rest Laravel',
-            "method" => 'GET'
-        ]);
-    }
-
-    public function getBandeja()
-    {
-         return view('bandejaEntrada');
+        //
     }
 
     /**

@@ -438,7 +438,7 @@
                 // Variable para almacenar los marcadores
                 var markers = [];
                 // Hacer la solicitud a la API de reclamos
-                fetch('http://localhost:8080/api/reclamos/reclamos', {
+                fetch('http://localhost:3000/api/reclamos/reclamos', {
                         method: "GET",
                     })
                     .then(response => response.json())

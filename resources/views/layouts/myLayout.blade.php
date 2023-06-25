@@ -69,7 +69,7 @@
             <li>
                 <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mis Tareas </span><span class="label label-warning float-right">16/24</span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="mailbox.html">Inbox</a></li>
+                    <li><a href="{{route('bandeja.getBandeja')}}">Inbox</a></li>
                     <li><a href="mail_detail.html">Email view</a></li>
                     <li><a href="mail_compose.html">Compose email</a></li>
                     <li><a href="email_template.html">Email templates</a></li>
@@ -81,9 +81,9 @@
                 </span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('funcionarios.getfuncionario')}}">Gestionar Funcionarios</a></li>
-                    <li><a href="profile.html">Gestionar Areas</a></li>
-                    <li><a href="profile.html">Gestionar Tipo de denuncia</a></li>
-                    <li><a href="profile.html">Gestionar Estados</a></li>
+                    <li><a href="{{route('area.getArea')}}">Gestionar Areas</a></li>
+                    <li><a href="{{route('categoria.getCategoria')}}">Gestionar Tipo de denuncia</a></li>
+                    <li><a href="{{route('estado.getEstado')}}">Gestionar Estados</a></li>
                     
                 </ul>
             </li>

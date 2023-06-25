@@ -1,9 +1,9 @@
 @extends('layouts.myLayout')
-@section('title', 'AdmFuncionarios')
+@section('title', 'AdmEstados')
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Funcionarios</h2>
+        <h2>Estados</h2>
     </div>
     <div class="col-lg-2">
     </div>
@@ -13,7 +13,7 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Gestion de Funcionarios</h5>
+                    <h5>Gestion de Estados</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -37,8 +37,9 @@
                                 <tr>
                                     <th>Nro</th>
                                     <th>Fecha</th>
-                                    <th>Nombre</th>
-                                    <th>Area</th>
+                                    <th>Descripcion</th>
+                                    <th>Estado</th>
+                                    <th>Categoria</th>
                                 </tr>
                             </thead>
                             <tbody>

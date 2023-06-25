@@ -1,9 +1,9 @@
 @extends('layouts.myLayout')
-@section('title', 'AdmFuncionarios')
+@section('title', 'bandejaEntrada')
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Funcionarios</h2>
+        <h2>Mi bandeja</h2>
     </div>
     <div class="col-lg-2">
     </div>
@@ -13,7 +13,7 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Gestion de Funcionarios</h5>
+                    <h5>Bandeja de entrada</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -37,8 +37,9 @@
                                 <tr>
                                     <th>Nro</th>
                                     <th>Fecha</th>
-                                    <th>Nombre</th>
-                                    <th>Area</th>
+                                    <th>Descripcion</th>
+                                    <th>Estado</th>
+                                    <th>Categoria</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,4 +77,45 @@
 <script src="js/inspinia.js"></script>
 <script src="js/plugins/pace/pace.min.js"></script>
 
+<!-- Page-Level Scripts -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var tableBody = document.querySelector('.dataTables-example tbody');
+
+        //var area = localStorage.getItem('area'); // Obtener el valor de área almacenado en el LocalStorage
+        var area =var area = {"area": "test2"};
+
+
+        fetch('http://localhost:3000/api/reclamos/reclamos?area=' + encodeURIComponent(area), {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                var reclamos = data.body;
+                var tableBodyContent = '';
+
+                for (var i = 0; i < reclamos.length; i++) {
+                    var reclamo = reclamos[i];
+                    var fecha = reclamo.fecha;
+                    var descripcion = reclamo.descripcion;
+                    var estado = reclamo.estado;
+                    var categoria = reclamo.categoria;
+
+                    tableBodyContent += '<tr>';
+                    tableBodyContent += '<td>' + (i + 1) + '</td>';
+                    tableBodyContent += '<td>' + fecha + '</td>';
+                    tableBodyContent += '<td>' + descripcion + '</td>';
+                    tableBodyContent += '<td>' + estado + '</td>';
+                    tableBodyContent += '<td>' + categoria + '</td>';
+                    tableBodyContent += '</tr>';
+                }
+
+                tableBody.innerHTML = tableBodyContent;
+            })
+            .catch(error => console.log(error));
+    });
+</script>
 @endsection
